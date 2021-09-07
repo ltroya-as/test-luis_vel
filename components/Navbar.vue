@@ -17,18 +17,18 @@
         />
       </svg>
 
-      {{ name }}
+      {{ username }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  computed: {
-    name() {
-      return 'name'
+  props: {
+    username: {
+      type: String,
+      default: 'Anonymous',
     },
   },
 }
 </script>
-

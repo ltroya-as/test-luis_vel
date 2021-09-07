@@ -43,28 +43,46 @@ export default {
 
   computed: {
     options() {
-      return []
+      return this.students.map((student) => ({
+        name: student.first + ' ' + student.lastname,
+      }))
     },
 
     totalScore() {
-      return 0
+      let total = 0
+
+      this.students.forEach((student) => {
+        total += student.score
+      })
+
+      return total
     },
 
     maxScore() {
-      return 0
+      const scores = this.students.map((student) => student.score)
+      return Math.max(...scores)
     },
 
     minScore() {
-      return 0
+      const scores = this.students.map((student) => student.score)
+      return Math.min(...scores)
     },
+
     topStudent() {
-      return 'Name'
+      const topStudent = this.students.find(
+        (student) => student.score === this.maxScore
+      )
+
+      return `${topStudent.first} ${topStudent.lastname}`
     },
 
     worstStudent() {
-      return 'Name'
+      const worstStudent = this.students.find(
+        (student) => student.score === this.minScore
+      )
+
+      return `${worstStudent.first} ${worstStudent.lastname}`
     },
   },
 }
 </script>
-

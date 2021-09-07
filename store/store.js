@@ -1,3 +1,3 @@
 export const state = () => ({
-  username: 'Javier'
+  username: 'Javier',
 })
